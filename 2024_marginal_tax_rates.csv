@@ -1,0 +1,12 @@
+Year,AB 2024 Marginal Tax Rates,Lower Limit,Upper Limit,Income,"
+Income Tax Rate","Capital
+Gains Rate",Eligible Canadian Dividends Rate,Non-Eligible Canadian Dividends Rate
+2024,AB 2024 Marginal Tax Rates,0,55867,"first $55,867",25.00%,12.50%,2.57%,15.86%
+2024,AB 2024 Marginal Tax Rates,55867,111733,"over $55,867 up to $111,733",30.50%,15.25%,10.16%,22.18%
+2024,AB 2024 Marginal Tax Rates,111733,148269,"over $111,733 up to $148,269",36.00%,18.00%,17.75%,28.51%
+2024,AB 2024 Marginal Tax Rates,148269,173205,"over $148,269 up to $173,205",38.00%,19.00%,20.51%,30.81%
+2024,AB 2024 Marginal Tax Rates,173205,177922,"over $173,205 up to $177,922",41.32%,20.66%,25.09%,34.63%
+2024,AB 2024 Marginal Tax Rates,177922,237230,"over $177,922 up to $237,230",42.32%,21.16%,26.47%,35.78%
+2024,AB 2024 Marginal Tax Rates,237230,246752,"over $237,230 up to $246,752",43.32%,21.66%,27.85%,36.93%
+2024,AB 2024 Marginal Tax Rates,246752,355845,"over $246,752 up to $355,845",47.00%,23.50%,32.93%,41.16%
+2024,AB 2024 Marginal Tax Rates,355845,100000000,"over $355,845",48.00%,24.00%,34.31%,42.31%
