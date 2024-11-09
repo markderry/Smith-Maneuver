@@ -21,73 +21,51 @@ dividend_type_split <- c(0, 0.25, 0.5, 0.75, 1)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  
-  # Application title
-  titlePanel("Smith Maneuver"),
-  tabPanel(
-    "Smith Maneuver Analysis",
-    # Sidebar with a slider input for number of bins 
-    # create sidebar
-    sidebarLayout(
-      sidebarPanel(
-                   # Input variables
-                   
-                   numericInput("value_of_home", label = "Value of Home:", value = 1000000, step = 100000),
-                   numericInput("mortage", label = "Mortgage:", value = 500000, step = 50000),
-                   numericInput("line_of_credit_interest", label = "Line of Credit Interest:", value = 0.07, step = 0.005),
-                   numericInput("investment_yeild", label = "Investment Yeild:", value = 0.09, step = 0.005),
-                   numericInput("income", label = "Employment Income:", value = 100000, step = 10000)
-      ),
-      
-      # Show a plot of the generated distribution
-      mainPanel(
-        tableOutput("results_table")
+  navbarPage(
+    # Application title
+    titlePanel("Smith Maneuver"),
+    tabPanel(
+      "Smith Maneuver Analysis",
+      # Sidebar with a slider input for number of bins 
+      # create sidebar
+      sidebarLayout(
+        sidebarPanel(
+          # Input variables
+          
+          numericInput("value_of_home", label = "Value of Home:", value = 1000000, step = 100000),
+          numericInput("mortage", label = "Mortgage:", value = 500000, step = 50000),
+          numericInput("line_of_credit_interest", label = "Line of Credit Interest:", value = 0.07, step = 0.005),
+          numericInput("investment_yeild", label = "Investment Yeild:", value = 0.09, step = 0.005),
+          numericInput("income", label = "Employment Income:", value = 100000, step = 10000)
+        ),
+        
+        # Show a plot of the generated distribution
+        mainPanel(
+          tableOutput("results_table")
+        )
+      )
+    ),
+    tabPanel(
+      "Solution Space",
+      # filter panel
+      sidebarLayout(
+        sidebarPanel(
+          # Input variables
+          numericInput("value_of_home", label = "Value of Home:", value = 1000000, step = 100000),
+          numericInput("mortage", label = "Mortgage:", value = 500000, step = 50000),
+          numericInput("line_of_credit_interest", label = "Line of Credit Interest:", value = 0.07, step = 0.005),
+          numericInput("investment_yeild", label = "Investment Yeild:", value = 0.09, step = 0.005),
+          numericInput("income", label = "Employment Income:", value = 100000, step = 10000)
+        ),
+        
+        # Show a plot of the generated distribution
+        mainPanel(
+          tableOutput("results_table"),
+          plotOutput("solution_space")
+        )
       )
     )
-  ),
-  # tabPanel(
-  #   "Solution Space",
-  #   # filter panel
-  #   sidebarLayout(
-  #     sidebarPanel(
-  #                  selectInput(
-  #                    "employment_income_selection",
-  #                    label = "Employment Income",
-  #                    choices = employment_income
-  #                  ),
-  #                  selectInput(
-  #                    "home_value_selection",
-  #                    label = "Home Value",
-  #                    choices = home_value
-  #                  ),
-  #                  selectInput(
-  #                    "mortgage_balance_selection",
-  #                    label = "Mortgage Balance",
-  #                    choices = mortgage_balance
-  #                  ),
-  #                  selectInput(
-  #                    "loc_interest_rate_selection",
-  #                    label = "LOC Interest Rate",
-  #                    choices = loc_interest_rate
-  #                  ),
-  #                  selectInput(
-  #                    "dividend_yeild_selection",
-  #                    label = "Dividend Yeild",
-  #                    choices = dividend_yeild
-  #                  ),
-  #                  selectInput(
-  #                    "dividend_type_split_selection",
-  #                    label = "Dividend Type Split",
-  #                    choices = dividend_type_split
-  #                  )
-  #     ),
-  #     
-  #     # Show a plot of the generated distribution
-  #     mainPanel(
-  #     
-  #     )
-  #   )
-  # )
+  )
 )
 
 # Define server logic required to draw a histogram
@@ -125,10 +103,6 @@ server <- function(input, output, session) {
                                                 interest_expense = 0, 
                                                 dividend_type_split = 0.5)
       } else {
-        # loc_ballance <- loc_ballance + scenarios$sm_effective_value[i - 1]
-        # if (loc_ballance > 0.65 * (home_value)) {
-        #   loc_ballance <- 0.65 * (home_value)
-        # }
         interest_expense <- loc_interest_rate * loc_ballance
         dividend_income <- loc_ballance * dividend_yeild
         scenarios <- rbind(scenarios, calculate_tax_liability_sm(employment_income = employment_income, 
